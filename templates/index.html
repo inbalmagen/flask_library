@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Books List</h1>
+        <div class="row">
+            {% for book in books %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ book['image_url'] }}" class="card-img-top" alt="{{ book['title'] }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book['title'] }}</h5>
+                        <p class="card-text"><strong>Author:</strong> {{ book['author'] }}</p>
+                        <p class="card-text"><strong>ISBN:</strong> {{ book['isbn'] }}</p>
+                        <p class="card-text"><strong>Published Date:</strong> {{ book['published_date'] }}</p>
+                        <p class="card-text"><strong>Genre:</strong> {{ book['genre'] }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
