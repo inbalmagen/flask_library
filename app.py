@@ -13,10 +13,24 @@ def get_db():
 def index():
     db = get_db()
     cur = db.cursor()
+    
+    # Query to get all books
     cur.execute('SELECT * FROM books')
     books = cur.fetchall()
+    
+    # Query to get all loans
+    cur.execute('''
+    SELECT loans.id AS loan_id, users.name AS user_name, books.title AS book_title, 
+           loans.loan_date, loans.return_date, loans.due_date 
+    FROM loans 
+    JOIN users ON loans.user_id = users.id 
+    JOIN books ON loans.book_id = books.id
+    ''')
+    loans = cur.fetchall()
+    
     db.close()
-    return render_template('index.html', books=books)
+    
+    return render_template('index.html', books=books, loans=loans)
 
 if __name__ == '__main__':
     app.run(debug=True)

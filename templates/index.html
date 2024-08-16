@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books List</title>
+    <title>Library Management</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -25,9 +25,36 @@
             </div>
             {% endfor %}
         </div>
+        
+        <h2 class="my-4">Loans List</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Loan ID</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Book Title</th>
+                    <th scope="col">Loan Date</th>
+                    <th scope="col">Return Date</th>
+                    <th scope="col">Due Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for loan in loans %}
+                <tr>
+                    <td>{{ loan['loan_id'] }}</td>
+                    <td>{{ loan['user_name'] }}</td>
+                    <td>{{ loan['book_title'] }}</td>
+                    <td>{{ loan['loan_date'] }}</td>
+                    <td>{{ loan['return_date'] }}</td>
+                    <td>{{ loan['due_date'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
